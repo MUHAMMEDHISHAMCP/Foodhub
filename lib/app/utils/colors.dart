@@ -5,3 +5,5 @@ const subColor = Colors.white;
 const iconColor = Color.fromRGBO(27, 173, 75, 1);
 const cardColor = Color.fromRGBO(243, 241, 241, 1);
 const unselectedItemColor = Color.fromRGBO(183, 160, 160, 1);
+const kBlack = Colors.black;
+

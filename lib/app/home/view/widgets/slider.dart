@@ -27,7 +27,7 @@ class SilderWidget extends StatelessWidget {
         options: CarouselOptions(
             autoPlayCurve: Curves.slowMiddle,
             enlargeCenterPage: false,
-            aspectRatio: 2,
+            aspectRatio: 2.5,
             viewportFraction: 1));
   }
 }
