@@ -10,7 +10,7 @@ class RestaurantsList extends StatelessWidget {
         Image.asset(
           'assets/kfc.png',
           width: MediaQuery.of(context).size.width / 3.5,
-          height:70,
+          height:100,
         ),
         const Text(
           'KFC',

@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:project_wk16/app/account/view/account_page.dart';
+import 'package:project_wk16/app/cart/view/cart_page.dart';
+import 'package:project_wk16/app/favourite/view/favourite_page.dart';
 import 'package:project_wk16/app/home/view/homescreen.dart';
-import 'package:project_wk16/app/login/view/loginpage.dart';
-import 'package:project_wk16/app/signup/view/signup.dart';
 import 'package:project_wk16/app/utils/colors.dart';
 
 class BottomNav extends StatefulWidget {
@@ -16,9 +17,9 @@ class _BottomNavigationBarState extends State<BottomNav> {
 
   final screens = [
     const HomeScreen(),
-    const SignUpScreen(),
-    const LogInScreen(),
-    const SignUpScreen(),
+    const CartScreen(),
+    const FavouriteScreen(),
+    const AccountScreen(),
   ];
 
   @override
@@ -38,23 +39,23 @@ class _BottomNavigationBarState extends State<BottomNav> {
               selectedIndex = newIndex;
             });
           },
-          items: const [
-            BottomNavigationBarItem(
+          items:  [
+            const BottomNavigationBarItem(
               backgroundColor: subColor,
-              icon: Icon(Icons.home),
+              icon:  Icon(Icons.home),
               label: 'Home',
             ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.card_travel),
+            const BottomNavigationBarItem(
+              icon:  Icon(Icons.shopping_cart_outlined),
               label: 'Cart',
             ),
-            BottomNavigationBarItem(
+         BottomNavigationBarItem(
               backgroundColor: subColor,
-              icon: Icon(Icons.favorite_border),
-              label: 'Favoutite',
+              icon:  selectedIndex == 2 ?   const Icon(Icons.favorite): const Icon(Icons.favorite_border),
+              label: 'Favorite',
             ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.account_circle_outlined),
+            const BottomNavigationBarItem(
+              icon:  Icon(Icons.account_circle_outlined),
               label: 'Account',
             )
           ]),

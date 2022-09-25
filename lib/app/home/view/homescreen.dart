@@ -15,30 +15,32 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: subColor,
-        body: Center(
-          child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: ListView(
-              children: [
-                Column(
-                  children: [
-                    const Text(
-                      'What You Want \n For Dinner',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        fontSize: 22,
-                        fontWeight: FontWeight.bold,
-                      ),
+        backgroundColor: backgroundColor,
+        body: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: ListView(
+            physics: const BouncingScrollPhysics(),
+            children: [
+              Column(
+                children: [
+                  const Text(
+                    'What You Want \n For Dinner',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontSize: 22,
+                      fontWeight: FontWeight.bold,
                     ),
-                    kheight10,
-                    const LocationWidget(),
-                    kheight10,
-                    const SearchField(),
-                    kheight10,
-                    const SilderWidget(),
-                    kheight10,
-                    Row(
+                  ),
+                  kheight10,
+                  const LocationWidget(),
+                  kheight10,
+                  const SearchField(),
+                  kheight10,
+                  const SilderWidget(),
+                  kheight10,
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 16),
+                    child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: const [
                         MainTitle(
@@ -53,38 +55,41 @@ class HomeScreen extends StatelessWidget {
                         ),
                       ],
                     ),
-                    kheight10,
-                    CategoryWidget(),
-                    kheight10,
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 16),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: const [
-                          MainTitle(
-                            text: 'Restaurants',
-                            fontSize: 18,
-                            weight: FontWeight.w400,
-                          ),
-                          MainTitle(
-                            text: 'View all ▶',
-                            fontSize: 12,
-                            weight: FontWeight.bold,
-                          ),
-                        ],
-                      ),
+                  ),
+                  kheight10,
+                  CategoryWidget(),
+                  kheight10,
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 16),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: const [
+                        MainTitle(
+                          text: 'Restaurants',
+                          fontSize: 18,
+                          weight: FontWeight.w400,
+                        ),
+                        MainTitle(
+                          text: 'View all ▶',
+                          fontSize: 12,
+                          weight: FontWeight.bold,
+                        ),
+                      ],
                     ),
-                  ],
-                ),
-                Expanded(
-                  child: ListView(
-                      shrinkWrap: true,
-                      scrollDirection: Axis.horizontal,
-                      children:
-                          List.generate(10, (index) => RestaurantsList())),
-                )
-              ],
-            ),
+                  ),
+                ],
+              ),
+              kheight10,
+              LimitedBox(
+                maxHeight: 130,
+                child: ListView(
+                    physics: const BouncingScrollPhysics(),
+                    shrinkWrap: true,
+                    scrollDirection: Axis.horizontal,
+                    children:
+                        List.generate(10, (index) => const RestaurantsList())),
+              )
+            ],
           ),
         ),
       ),
