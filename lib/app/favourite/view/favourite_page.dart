@@ -14,7 +14,7 @@ class FavouriteScreen extends StatelessWidget {
         leading: const Icon(Icons.arrow_back,color: kBlack,),
         backgroundColor: backgroundColor,
         elevation: 0,
-        title:const MainTitle(text: 'My Favorite', fontSize: 22,color:kBlack,weight: FontWeight.w500,)
+        title:const MainTitle(text: 'My Favorites', fontSize: 22,color:kBlack,weight: FontWeight.w500,)
       ),
       backgroundColor: backgroundColor,
       body: ListView.builder(
@@ -29,12 +29,12 @@ class FavouriteScreen extends StatelessWidget {
                     height: MediaQuery.of(context).size.height / 7,
                     child: ListTile(
                       leading: SizedBox(
-                        child: Image.asset('assets/kfc.png'),
+                        child: Image.asset('assets/kfc fried.png'),
                       ),
                       title: const Padding(
                         padding: EdgeInsets.symmetric(vertical: 10),
                         child: Text(
-                          'Chicken Biriyani',
+                          'Kfc Fried Chicken',
                           textAlign: TextAlign.start,
                           style: TextStyle(
                             fontSize: 18,
@@ -45,7 +45,7 @@ class FavouriteScreen extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: const [
                           MainTitle(
-                            text: 'Afc Calicut',
+                            text: 'Kfc Calicut',
                             weight: FontWeight.w300,
                             fontSize: 14,
                           ),

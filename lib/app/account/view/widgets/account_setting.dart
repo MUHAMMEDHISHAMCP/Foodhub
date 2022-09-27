@@ -5,7 +5,7 @@ class AccountSettings extends StatelessWidget {
    AccountSettings({Key? key,required this.icon,required this.title,required this.onTap}) : super(key: key);
 Icon icon;
 String title;
-Function onTap;
+Function() onTap;
   @override
   Widget build(BuildContext context) {
     return     ListTile(
@@ -14,7 +14,7 @@ Function onTap;
                 title,
                 style: const TextStyle(fontWeight: FontWeight.w500),
               ),
-             onTap:onTap() , 
+             onTap:onTap , 
             );
   }
 }

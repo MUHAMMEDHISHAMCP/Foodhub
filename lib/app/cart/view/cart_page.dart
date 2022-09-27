@@ -30,12 +30,12 @@ class CartScreen extends StatelessWidget {
                   height: MediaQuery.of(context).size.height / 7,
                   child: ListTile(
                     leading: SizedBox(
-                      child: Image.asset('assets/kfc.png'),
+                      child: Image.asset('assets/biriyani.png'),
                     ),
                     title: const Padding(
                       padding: EdgeInsets.symmetric(vertical: 10),
                       child: Text(
-                        'Chicken Biriyani',
+                        'Mutton Biriyani',
                         textAlign: TextAlign.start,
                         style: TextStyle(
                           fontSize: 18,
@@ -46,7 +46,7 @@ class CartScreen extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: const [
                         MainTitle(
-                          text: '3 items | Afc Calicut',
+                          text: '3 items | Rahmath hotel',
                           weight: FontWeight.w300,
                           fontSize: 14,
                         ),

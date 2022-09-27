@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:project_wk16/app/account/view/widgets/account_setting.dart';
 import 'package:project_wk16/app/utils/colors.dart';
 import 'package:project_wk16/app/utils/constheight.dart';
 import 'package:project_wk16/app/widgets/maintitle.dart';
@@ -57,47 +58,46 @@ class AccountScreen extends StatelessWidget {
               ),
             ),
             kheight10,
-            const ListTile(
-              leading: Icon(Icons.location_on_sharp),
-              title: Text(
-                'Saved address',
-                style: TextStyle(fontWeight: FontWeight.w500),
-              ),
+            AccountSettings(
+              icon: const Icon(Icons.location_on_sharp),
+              title: 'Saved address',
+              onTap: () {},
             ),
-            const ListTile(
-              leading: Icon(Icons.notifications),
-              title: Text(
-                'Notification',
-                style: TextStyle(fontWeight: FontWeight.w500),
-              ),
+    
+            AccountSettings(
+              icon: const Icon(Icons.notifications),
+              title: 'Notification',
+              onTap: () {},
             ),
-            const ListTile(
-              leading: Icon(Icons.card_giftcard_sharp),
-              title: Text(
-                'My Orders',
-                style: TextStyle(fontWeight: FontWeight.w500),
-              ),
+    
+            AccountSettings(
+              icon: const Icon(Icons.card_giftcard_sharp),
+              title: 'My Orders',
+              onTap: () {},
             ),
-            const ListTile(
-              leading: Icon(Icons.perm_contact_cal_rounded),
-              title: Text(
-                'Contact Us',
-                style: TextStyle(fontWeight: FontWeight.w500),
-              ),
+            // const ListTile(
+            //   leading: Icon(Icons.card_giftcard_sharp),
+            //   title: Text(
+            //     'My Orders',
+            //     style: TextStyle(fontWeight: FontWeight.w500),
+            //   ),
+            // ),
+            AccountSettings(
+              icon: const Icon(Icons.perm_contact_cal_rounded),
+              title: 'Contact Us',
+              onTap: () {},
             ),
-            const ListTile(
-              leading: Icon(Icons.star),
-              title: Text(
-                'Rate this app',
-                style: TextStyle(fontWeight: FontWeight.w500),
-              ),
+    
+            AccountSettings(
+              icon: const Icon(Icons.star),
+              title: 'Rate this app',
+              onTap: () {},
             ),
-            const ListTile(
-              leading: Icon(Icons.logout),
-              title: Text(
-                'Logout',
-                style: TextStyle(fontWeight: FontWeight.w500),
-              ),
+    
+            AccountSettings(
+              icon: const Icon(Icons.logout),
+              title: 'Logout',
+              onTap: () {},
             ),
           ],
         ),
