@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:project_wk16/app/login/controller/login.dart';
 import 'package:project_wk16/app/signup/view/signup.dart';
 import 'package:project_wk16/app/utils/constheight.dart';
 import 'package:project_wk16/app/widgets/bottomnav.dart';
 import 'package:project_wk16/app/widgets/clipper.dart';
 import 'package:project_wk16/app/widgets/googlesign.dart';
+import 'package:provider/provider.dart';
 
 class LogInScreen extends StatelessWidget {
   const LogInScreen({Key? key}) : super(key: key);
@@ -29,78 +31,90 @@ class LogInScreen extends StatelessWidget {
               ),
               Positioned(
                 left: MediaQuery.of(context).size.width / 2.8,
-                top: MediaQuery.of(context).size.width / 2.1,
+                top: MediaQuery.of(context).size.width / 1.7,
                 child: const CircleAvatar(
                   radius: 50,
                   backgroundImage: AssetImage('assets/fhlogo.png'),
-                  foregroundColor: Colors.red,
                 ),
               ),
             ],
           ),
-          kHeight20,
+          kHeight15,
           Center(
             child: Padding(
               padding: const EdgeInsets.all(16),
-              child: Column(
-                children: [
-                  TextFormField(
-                    decoration: const InputDecoration(
-                      hintText: 'E-mail',
-                      counterText: '',
-                      contentPadding: EdgeInsets.all(10),
-                      border: OutlineInputBorder(),
-                    ),
-                    maxLength: 12,
-                  ),
-                  kHeight20,
-                  TextFormField(
-                    decoration: const InputDecoration(
-                      hintText: 'Password',
-                      counterText: '',
-                      contentPadding: EdgeInsets.all(10),
-                      border: OutlineInputBorder(),
-                    ),
-                    maxLength: 12,
-                  ),
-                  kHeight20,
-                  SizedBox(
-                    width: 220,
-                    height: 40,
-                    child: ElevatedButton(
-                      onPressed: () {
+              child: Consumer<SignInController>(
+                builder: (context, value, child) {
+                  return Form(
+                    key: value.ssss,
+                    child: Column(
+                      children: [
+                        kHeight30,
+                        TextFormField(
+                          controller: value.emailController,
+                          validator: value.emailValidator,
+                          decoration: const InputDecoration(
+                            hintText: 'E-mail',
+                            counterText: '',
+                            contentPadding: EdgeInsets.all(10),
+                            border: OutlineInputBorder(),
+                          ),
+                          maxLength: 12,
+                        ),
+                        kHeight15,
+                        TextFormField(
+                          controller: value.passwordController,
+                          validator: value.passwordValidator,
+                          decoration: const InputDecoration(
+                            hintText: 'Password',
+                            counterText: '',
+                            contentPadding: EdgeInsets.all(10),
+                            border: OutlineInputBorder(),
+                          ),
+                          maxLength: 12,
+                        ),
+                        kHeight20,
+                        SizedBox(
+                          width: 220,
+                          height: 40,
+                          child: ElevatedButton(
+                            onPressed: () {
                               Navigator.of(context).push(
-                            MaterialPageRoute(
-                              builder: (context) => const BottomNav(),
+                                MaterialPageRoute(
+                                  builder: (context) => const BottomNav(),
+                                ),
+                              );
+                              // value.formKey.currentState!.validate();
+                            },
+                            style: ElevatedButton.styleFrom(
+                              fixedSize: const Size(150, 30),
+                              primary: const Color.fromRGBO(47, 173, 103, 1),
                             ),
-                          );
-                      },
-                      style: ElevatedButton.styleFrom(
-                        fixedSize: const Size(150, 30),
-                        primary: const Color.fromRGBO(47, 173, 103, 1),
-                      ),
-                      child: const Text('Sign In'),
+                            child: const Text('Sign In'),
+                          ),
+                        ),
+                        kHeight30,
+                        const GoogleSign(),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            const Text('DONT HAVE AN ACCOUNT?'),
+                            TextButton(
+                              onPressed: () {
+                                Navigator.of(context).push(
+                                  MaterialPageRoute(
+                                    builder: (context) => const SignUpScreen(),
+                                  ),
+                                );
+                              },
+                              child: const Text('Sign Up'),
+                            ),
+                          ],
+                        ),
+                      ],
                     ),
-                  ),
-                  kHeight30,
-                  const GoogleSign(),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      const Text('DONT HAVE AN ACCOUNT?'),
-                      TextButton(
-                        onPressed: () {
-                          Navigator.of(context).push(
-                            MaterialPageRoute(
-                              builder: (context) => const SignUpScreen(),
-                            ),
-                          );
-                        },
-                        child: const Text('Sign Up'),
-                      ),
-                    ],
-                  ),
-                ],
+                  );
+                },
               ),
             ),
           ),

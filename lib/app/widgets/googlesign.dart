@@ -12,7 +12,7 @@ class GoogleSign extends StatelessWidget {
           child: Container(
             alignment: Alignment.centerLeft,
             height: 30,
-            width: 180,
+            width: 170,
             decoration: BoxDecoration(
                 border: Border.all(color: Colors.black45),
                 borderRadius: BorderRadius.circular(120)),
@@ -23,7 +23,7 @@ class GoogleSign extends StatelessWidget {
                   child: Image.asset('assets/google.png'),
                 ),
                 const Text(
-                  'sighnu with google',
+                  'Sign In with google',
                   style: TextStyle(fontSize: 15),
                 )
               ],
