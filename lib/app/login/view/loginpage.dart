@@ -25,18 +25,18 @@ class LogInScreen extends StatelessWidget {
                       image: DecorationImage(
                           image: AssetImage('assets/logimg.png'))),
                   //  color: const Color.fromARGB(255, 66, 236, 72),
-                  height: MediaQuery.of(context).size.height / 2.3,
+                  height: MediaQuery.of(context).size.height / 2.5,
                   width: double.infinity,
                 ),
               ),
-              Positioned(
-                left: MediaQuery.of(context).size.width / 2.8,
-                top: MediaQuery.of(context).size.width / 1.7,
-                child: const CircleAvatar(
-                  radius: 50,
-                  backgroundImage: AssetImage('assets/fhlogo.png'),
-                ),
-              ),
+              // Positioned(
+              //   left: MediaQuery.of(context).size.width / 2.8,
+              //   top: MediaQuery.of(context).size.width / 1.7,
+              //   child: const CircleAvatar(
+              //     radius: 50,
+              //     backgroundImage: AssetImage('assets/fhlogo.png'),
+              //   ),
+              // ),
             ],
           ),
           kHeight15,
