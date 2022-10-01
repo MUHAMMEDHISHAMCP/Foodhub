@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:project_wk16/app/signup/controller/signup.dart';
-import 'package:project_wk16/app/signup/model/signup_model.dart';
-import 'package:project_wk16/app/signup/services/signup_services.dart';
 import 'package:project_wk16/app/utils/colors.dart';
 import 'package:project_wk16/app/utils/constheight.dart';
 import 'package:project_wk16/app/widgets/clipper.dart';
@@ -27,7 +25,7 @@ class SignUpScreen extends StatelessWidget {
                       image: DecorationImage(
                           image: AssetImage('assets/logimg.png'))),
                   //  color: const Color.fromARGB(255, 66, 236, 72),
-                  height: MediaQuery.of(context).size.height / 2.5,
+                  height: MediaQuery.of(context).size.height / 3,
                   width: double.infinity,
                 ),
               ),
@@ -70,22 +68,14 @@ class SignUpScreen extends StatelessWidget {
                           ),
                         ),
                         kHeight15,
-                        Consumer<SignUpController>(
-                          builder: (context, value, child) {
-                           return TextFormField(
-                            obscureText: true,
-                            controller: value.passwordController,
-                            validator: value.passwordValidator,
-                            decoration:  InputDecoration(
-                              hintText: 'Password',
-                              contentPadding: EdgeInsets.all(10),
-                              border: OutlineInputBorder(),
-                              suffix: IconButton(onPressed: (){
-                                value.isObscure = !value.isObscure;
-                              }, icon:Icon(value.isObscure ? Icons.visibility_sharp : Icons.visibility_off_sharp) )
-                            ),
-                          );
-                          },
+                        TextFormField(
+                          controller: value.passwordController,
+                          validator: value.passwordValidator,
+                          decoration: const InputDecoration(
+                            hintText: 'Password',
+                            contentPadding: EdgeInsets.all(10),
+                            border: OutlineInputBorder(),
+                          ),
                         ),
                         kHeight15,
                         TextFormField(
@@ -101,22 +91,21 @@ class SignUpScreen extends StatelessWidget {
                         SizedBox(
                           width: 220,
                           height: 40,
-                          child: ElevatedButton(
-                            onPressed: () {
-                           //   value.formKey.currentState!.validate();
-                              final oj = SignUpModel(
-                                userName: value.userNameController.text,
-                                email: value.emailController.text,
-                                password: value.passwordController.text,
-                                confirmPassword: value.confirmController.text,
-                                role: "ROLE_USER",
-                              );
-                              SignUpServices().singnUpRepo(oj);
+                          child: Consumer<SignUpController>(
+                            builder: (context, val, child) {
+                            return  ElevatedButton(
+                              onPressed: () {
+                             //   value.formKey.currentState!.validate();
+                             val.formKey.currentState!.validate();
+                              val.signUp(context);
+                              // value.dispose();
+                              },
+                              style: ElevatedButton.styleFrom(
+                                  fixedSize: const Size(150, 30),
+                                  primary: mainColor),
+                              child: const Text('Sign Up'),
+                            );
                             },
-                            style: ElevatedButton.styleFrom(
-                                fixedSize: const Size(150, 30),
-                                primary: mainColor),
-                            child: const Text('Sign Up'),
                           ),
                         ),
                         kHeight20,

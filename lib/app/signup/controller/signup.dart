@@ -1,4 +1,12 @@
-import 'package:flutter/cupertino.dart';
+import 'dart:developer';
+
+import 'package:flutter/material.dart';
+import 'package:project_wk16/app/home/view/homescreen.dart';
+import 'package:project_wk16/app/signup/model/signup_model.dart';
+import 'package:project_wk16/app/signup/services/signup_services.dart';
+import 'package:project_wk16/app/utils/colors.dart';
+import 'package:project_wk16/app/widgets/bottomnav.dart';
+import 'package:project_wk16/app/widgets/snackbar.dart';
 
 class SignUpController extends ChangeNotifier {
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
@@ -7,11 +15,43 @@ class SignUpController extends ChangeNotifier {
   final passwordController = TextEditingController();
   final confirmController = TextEditingController();
 
+  bool isLoading = true;
+
   bool _isObscure = true;
   get isObscure => _isObscure;
   set isObscure(value) {
     _isObscure = value;
     notifyListeners();
+  }
+
+  signUp(context) async {
+    if (formKey.currentState!.validate()) {
+      isLoading = true;
+      notifyListeners();
+      final SignUpModel userDatas = SignUpModel(
+        userName: userNameController.text,
+        email: emailController.text,
+        password: passwordController.text,
+        confirmPassword: confirmController.text,
+        role: "ROLE_USER",
+      );
+      SignUpResponse response = await SignUpServices().singnUpRepo(userDatas);
+    
+
+      if (response.message == "true") {
+        Navigator.of(context).pushAndRemoveUntil(
+            MaterialPageRoute(
+              builder: (context) => const BottomNav(),
+            ),
+            (route) => false);
+                    ScaffoldMessenger.of(context).showSnackBar(ShowDialogs.popUp('Sign Up Succesfully',mainColor));
+
+        isLoading = false;
+        notifyListeners();
+      } else if(response.message != "true"){
+        ScaffoldMessenger.of(context).showSnackBar(ShowDialogs.popUp('${response.message}'));
+      }
+    }
   }
 
   String? nameValidator(String? fieldContent) {
@@ -56,4 +96,16 @@ class SignUpController extends ChangeNotifier {
   //   isLoading = false;
   //   notifyListeners();
   // }
+
+    void disposes() {
+    formKey.currentState!.reset();
+    userNameController.clear();
+    emailController.clear();
+    passwordController.clear();
+    confirmController.clear();
+    _isObscure = true;
+    isLoading = false;
+    notifyListeners();
+  }
 }
+

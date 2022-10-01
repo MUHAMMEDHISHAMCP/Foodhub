@@ -1,6 +1,4 @@
-import 'dart:convert';
 
-import 'package:dio/dio.dart';
 
 class SignUpModel {
   String userName;
@@ -32,7 +30,7 @@ class SignUpResponse {
   SignUpResponse({this.message, this.id});
 
   factory SignUpResponse.fromJson(Map<String, dynamic> json) => SignUpResponse(
-        message: json["messege"] ?? '',
+        message: json["message"] ?? '',
         id: json["userId"] ?? '',
       );
 }

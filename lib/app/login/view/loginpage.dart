@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:project_wk16/app/login/controller/login.dart';
 import 'package:project_wk16/app/signup/view/signup.dart';
 import 'package:project_wk16/app/utils/constheight.dart';
-import 'package:project_wk16/app/widgets/bottomnav.dart';
 import 'package:project_wk16/app/widgets/clipper.dart';
 import 'package:project_wk16/app/widgets/googlesign.dart';
 import 'package:provider/provider.dart';
@@ -46,7 +45,7 @@ class LogInScreen extends StatelessWidget {
               child: Consumer<SignInController>(
                 builder: (context, value, child) {
                   return Form(
-                    key: value.ssss,
+                    key: value.formKey,
                     child: Column(
                       children: [
                         kHeight30,
@@ -59,7 +58,6 @@ class LogInScreen extends StatelessWidget {
                             contentPadding: EdgeInsets.all(10),
                             border: OutlineInputBorder(),
                           ),
-                          maxLength: 12,
                         ),
                         kHeight15,
                         TextFormField(
@@ -77,20 +75,24 @@ class LogInScreen extends StatelessWidget {
                         SizedBox(
                           width: 220,
                           height: 40,
-                          child: ElevatedButton(
-                            onPressed: () {
-                              Navigator.of(context).push(
-                                MaterialPageRoute(
-                                  builder: (context) => const BottomNav(),
-                                ),
-                              );
-                              // value.formKey.currentState!.validate();
-                            },
-                            style: ElevatedButton.styleFrom(
-                              fixedSize: const Size(150, 30),
-                              primary: const Color.fromRGBO(47, 173, 103, 1),
+                          child: Consumer<SignInController>(
+                            builder: (context, val, child) => 
+                             ElevatedButton(
+                              onPressed: () {
+                                // Navigator.of(context).push(
+                                //   MaterialPageRoute(
+                                //     builder: (context) => const BottomNav(),
+                                //   ),
+                                //);
+                                val.logIn(context);
+                                // value.formKey.currentState!.validate();
+                              },
+                              style: ElevatedButton.styleFrom(
+                                fixedSize: const Size(150, 30),
+                                primary: const Color.fromRGBO(47, 173, 103, 1),
+                              ),
+                              child: const Text('Sign In'),
                             ),
-                            child: const Text('Sign In'),
                           ),
                         ),
                         kHeight30,
