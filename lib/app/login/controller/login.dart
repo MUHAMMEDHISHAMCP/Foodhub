@@ -15,8 +15,8 @@ class SignInController extends ChangeNotifier {
   logIn(context) async{
     if (formKey.currentState!.validate()) {
         LoginModel userData = LoginModel(
-      email: passwordController.text,
-      paassword: emailController.text,
+      email: emailController.text,
+      paassword: passwordController.text,
     );
     print(emailController.text);
     print(passwordController.text);
@@ -26,13 +26,12 @@ if (response.message == null) {
   print('object');
 }
     if (response.message == "true") {
-      print('dsac');
               Navigator.of(context).pushAndRemoveUntil(
             MaterialPageRoute(
               builder: (context) => const BottomNav(),
             ),
             (route) => false);
-                    ScaffoldMessenger.of(context).showSnackBar(ShowDialogs.popUp('Sign Up Succesfully',mainColor));
+                    ScaffoldMessenger.of(context).showSnackBar(ShowDialogs.popUp('Sign In Succesfully',mainColor));
 
     } else{
       log(response.message.toString());

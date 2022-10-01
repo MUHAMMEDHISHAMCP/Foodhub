@@ -18,15 +18,7 @@ class AccountScreen extends StatelessWidget {
           children: [
             Container(
               decoration: const BoxDecoration(
-                  gradient: LinearGradient(
-                      colors: [
-                        Color.fromRGBO(52, 195, 99, 1),
-                        Color.fromRGBO(127, 186, 190, 1),
-                      ],
-                      begin: FractionalOffset.centerLeft,
-                      end: FractionalOffset.centerRight,
-                      tileMode: TileMode.clamp),
-                  // color: mainColor,
+                  color: mainColor,
                   borderRadius: BorderRadius.only(
                       bottomLeft: Radius.circular(20),
                       bottomRight: Radius.circular(20))),
@@ -63,13 +55,13 @@ class AccountScreen extends StatelessWidget {
               title: 'Saved address',
               onTap: () {},
             ),
-    
+
             AccountSettings(
               icon: const Icon(Icons.notifications),
               title: 'Notification',
               onTap: () {},
             ),
-    
+
             AccountSettings(
               icon: const Icon(Icons.card_giftcard_sharp),
               title: 'My Orders',
@@ -87,13 +79,13 @@ class AccountScreen extends StatelessWidget {
               title: 'Contact Us',
               onTap: () {},
             ),
-    
+
             AccountSettings(
               icon: const Icon(Icons.star),
               title: 'Rate this app',
               onTap: () {},
             ),
-    
+
             AccountSettings(
               icon: const Icon(Icons.logout),
               title: 'Logout',

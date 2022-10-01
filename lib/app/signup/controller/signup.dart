@@ -1,7 +1,5 @@
-import 'dart:developer';
 
 import 'package:flutter/material.dart';
-import 'package:project_wk16/app/home/view/homescreen.dart';
 import 'package:project_wk16/app/signup/model/signup_model.dart';
 import 'package:project_wk16/app/signup/services/signup_services.dart';
 import 'package:project_wk16/app/utils/colors.dart';
